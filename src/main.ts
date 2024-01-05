@@ -12,7 +12,7 @@ import vertexShader from './shaders/vertex.glsl';
 import fragmentShader from './shaders/fragment.glsl';
 
 const getResolution = () => {
-  return new Vector2(window.innerWidth / 100, window.innerHeight / 100);
+  return new Vector2(window.innerWidth, window.innerHeight);
 };
 
 const canvas = document.querySelector('canvas#root') as HTMLCanvasElement;
@@ -53,7 +53,7 @@ window.addEventListener('resize', () => {
 
 const clock = new Clock();
 const tick = () => {
-  plane.material.uniforms.t.value = clock.elapsedTime;
+  plane.material.uniforms.t.value = clock.getElapsedTime();
   renderer.render(scene, camera);
   window.requestAnimationFrame(tick);
 };
